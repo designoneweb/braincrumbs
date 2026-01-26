@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BRAIN CRUMBS - Latent Space Industrial Design System
+   "I Don't Just Code. I Manifest Reality."
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Base Layer */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #000000;
+  }
+
+  body {
+    @apply bg-void text-white antialiased;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(0, 255, 65, 0.3);
+    color: #00FF41;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00FF41;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FILM GRAIN OVERLAY - 35mm Darkroom Aesthetic
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.film-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grain 8s steps(10) infinite;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CRT SCANLINE EFFECT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.3;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLITCH EFFECT COMPONENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.glitch-wrapper {
+  position: relative;
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text:hover::before {
+  animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ffff;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.glitch-text:hover::after {
+  animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #ff00ff;
+  z-index: -2;
+  opacity: 0.8;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, -2px); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(2px, 2px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(2px, -2px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(-2px, 2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(2px, 2px); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(-2px, -2px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(-2px, 2px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(2px, -2px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TERMINAL STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.terminal-window {
+  @apply bg-void-soft border border-terminal-green/30 rounded-lg overflow-hidden;
+  box-shadow:
+    0 0 20px rgba(0, 255, 65, 0.2),
+    inset 0 0 60px rgba(0, 255, 65, 0.03);
+}
+
+.terminal-header {
+  @apply flex items-center gap-2 px-4 py-3 bg-void-lighter border-b border-terminal-green/20;
+}
+
+.terminal-dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+.terminal-body {
+  @apply p-6 font-mono text-terminal-green;
+}
+
+.terminal-cursor {
+  @apply inline-block w-2.5 h-5 bg-terminal-green ml-1;
+  animation: blink 1s step-end infinite;
+}
+
+.terminal-prompt {
+  @apply text-terminal-green/60;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOLOGRAPHIC BUTTON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.holo-button {
+  @apply relative px-8 py-4 font-display font-bold tracking-wider uppercase;
+  @apply border-2 border-terminal-green text-terminal-green;
+  @apply transition-all duration-300;
+  background: transparent;
+  overflow: hidden;
+}
+
+.holo-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 65, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.holo-button:hover::before {
+  left: 100%;
+}
+
+.holo-button:hover {
+  @apply bg-terminal-green text-void;
+  box-shadow:
+    0 0 30px rgba(0, 255, 65, 0.5),
+    0 0 60px rgba(0, 255, 65, 0.3),
+    0 0 90px rgba(0, 255, 65, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOLOGRAPHIC GRADIENT TEXT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.holo-text {
+  background: linear-gradient(
+    135deg,
+    #ff00ff 0%,
+    #00ffff 25%,
+    #ffff00 50%,
+    #ff00ff 75%,
+    #00ffff 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holo-shift 3s ease-in-out infinite;
+}
+
+@keyframes holo-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(30deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEURAL GLOW EFFECTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.neural-glow {
+  position: relative;
+}
+
+.neural-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00FF41, #00ffff, #ff00ff, #00FF41);
+  background-size: 400% 400%;
+  border-radius: inherit;
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+.neural-glow:hover::after {
+  opacity: 0.6;
+}
+
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION TRANSITIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HORIZONTAL SCROLL SECTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.horizontal-scroll-container {
+  @apply flex gap-8;
+  width: max-content;
+}
+
+.horizontal-scroll-section {
+  @apply flex-shrink-0 w-screen h-screen flex items-center justify-center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GALAXY VIEW STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.galaxy-node {
+  @apply absolute cursor-pointer transition-all duration-500;
+  transform-style: preserve-3d;
+}
+
+.galaxy-node:hover {
+  transform: scale(1.2) translateZ(50px);
+  z-index: 10;
+}
+
+.galaxy-node::before {
+  content: '';
+  @apply absolute inset-0 rounded-full;
+  background: radial-gradient(circle, rgba(0, 255, 65, 0.3) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galaxy-node:hover::before {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CODE COMMENT TESTIMONIALS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.code-comment {
+  @apply font-mono text-sm;
+  color: #6A9955;
+}
+
+.code-comment .author {
+  @apply text-terminal-green;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STATS TICKER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.stats-ticker {
+  @apply font-mono text-terminal-green;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.stats-value {
+  @apply text-4xl font-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   KONAMI CODE GLITCH MODE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.konami-active {
+  animation: konami-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes konami-glitch {
+  0% { filter: hue-rotate(0deg) saturate(1); }
+  10% { filter: hue-rotate(90deg) saturate(2); transform: translate(-5px, 5px); }
+  20% { filter: hue-rotate(180deg) saturate(3); transform: translate(5px, -5px); }
+  30% { filter: hue-rotate(270deg) saturate(2); transform: translate(-5px, -5px); }
+  40% { filter: hue-rotate(360deg) saturate(1); transform: translate(5px, 5px); }
+  50% { filter: hue-rotate(270deg) saturate(3); transform: translate(0, 0); }
+  60% { filter: hue-rotate(180deg) saturate(2); transform: translate(-3px, 3px); }
+  70% { filter: hue-rotate(90deg) saturate(1); transform: translate(3px, -3px); }
+  80% { filter: hue-rotate(45deg) saturate(2); transform: translate(-3px, -3px); }
+  90% { filter: hue-rotate(0deg) saturate(1.5); transform: translate(3px, 3px); }
+  100% { filter: hue-rotate(0deg) saturate(1); transform: translate(0, 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .film-grain {
+    opacity: 0.02;
+  }
+
+  .scanlines {
+    opacity: 0.15;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3D CANVAS CONTAINER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.canvas-container {
+  @apply absolute inset-0;
+  z-index: 0;
+}
+
+.canvas-container canvas {
+  @apply w-full h-full;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
