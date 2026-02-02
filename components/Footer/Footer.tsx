@@ -136,21 +136,26 @@ export function Footer() {
       {/* Background subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-void-lighter/50 to-transparent" />
 
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Main Footer Content */}
           <div className="grid md:grid-cols-3 gap-12 mb-16">
-            {/* Brand */}
-            <div>
-              <h3 className="font-display text-2xl font-bold text-white mb-4">
-                Brain<span className="text-terminal-green">Crumbs</span>
-              </h3>
-              <p className="text-white/50 text-sm leading-relaxed">
+            {/* Brand — spans 2 columns */}
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-4 mb-4 select-none">
+                <img src="/bc_icon_logo.png" alt="BrainCrumbs Logo" className="h-16 w-auto" />
+                <span className="font-mono text-4xl font-extrabold tracking-tight">
+                  <span className="text-white">Brain</span>
+                  <span className="text-terminal-green">_Crumbs</span>
+                </span>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed">
                 Your project is currently limited by human inefficiency. I am the patch.
               </p>
             </div>
 
-            {/* Quick Links */}
+            {/* Links & Contact */}
             <div>
               <h4 className="font-mono text-sm text-terminal-green tracking-wider mb-4">
                 // Links
@@ -161,7 +166,7 @@ export function Footer() {
                     href="https://www.freelancer.com/u/BrianCrumby"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 hover:text-terminal-green transition-colors text-sm"
+                    className="text-white/60 hover:text-terminal-green transition-colors text-sm"
                   >
                     Freelancer.com Profile
                   </a>
@@ -171,7 +176,7 @@ export function Footer() {
                     href="https://github.com/briancrumby"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 hover:text-terminal-green transition-colors text-sm"
+                    className="text-white/60 hover:text-terminal-green transition-colors text-sm"
                   >
                     GitHub
                   </a>
@@ -181,22 +186,19 @@ export function Footer() {
                     href="https://linkedin.com/in/briancrumby"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 hover:text-terminal-green transition-colors text-sm"
+                    className="text-white/60 hover:text-terminal-green transition-colors text-sm"
                   >
                     LinkedIn
                   </a>
                 </li>
               </ul>
-            </div>
 
-            {/* Contact */}
-            <div>
-              <h4 className="font-mono text-sm text-terminal-green tracking-wider mb-4">
+              <h4 className="font-mono text-sm text-terminal-green tracking-wider mb-4 mt-6">
                 // Contact
               </h4>
               <a
                 href="mailto:brian@braincrumbs.app"
-                className="text-white/50 hover:text-terminal-green transition-colors text-sm"
+                className="text-white/60 hover:text-terminal-green transition-colors text-sm"
               >
                 brian@braincrumbs.app
               </a>
@@ -208,11 +210,11 @@ export function Footer() {
 
           {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-mono text-xs text-white/30">
+            <p className="font-mono text-sm text-white/50">
               Built by Brian Crumby. Powered by Neural Networks & Caffeine.
             </p>
 
-            <p className="font-mono text-xs text-white/30">
+            <p className="font-mono text-sm text-white/50">
               © {currentYear} BrainCrumbs. All rights reserved.
             </p>
           </div>

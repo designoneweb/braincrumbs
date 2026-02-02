@@ -250,10 +250,10 @@ function ProjectCard({ project, onClose }: { project: Project; onClose: () => vo
               <div className="terminal-dot bg-red-500" />
               <div className="terminal-dot bg-yellow-500" />
               <div className="terminal-dot bg-green-500" />
-              <span className="ml-4 text-xs text-white/40 font-mono">{project.id}.ts</span>
+              <span className="ml-4 text-sm text-white/60 font-mono">{project.id}.ts</span>
             </div>
             <div className="terminal-body text-sm">
-              <div className="text-white/40">{'// Project metrics'}</div>
+              <div className="text-white/60">{'// Project metrics'}</div>
               <div><span className="text-holo-magenta">export const</span> metrics = {'{'}</div>
               <div className="ml-4">status: <span className="text-terminal-green">"completed"</span>,</div>
               <div className="ml-4">satisfaction: <span className="text-holo-yellow">100</span>,</div>
@@ -366,7 +366,7 @@ export function GalaxyView() {
           Fragments of <span className="holo-text">Genius</span>
         </motion.h2>
         <motion.p
-          className="text-white/50 mt-4 font-mono text-sm"
+          className="text-white/60 mt-4 font-mono text-sm"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

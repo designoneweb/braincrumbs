@@ -43,7 +43,7 @@ function AnimatedStat({ label, value, suffix = '', prefix = '', duration = 2 }: 
           {prefix}{displayValue.toLocaleString()}{suffix}
         </span>
       </div>
-      <div className="font-mono text-sm text-white/50 mt-2 tracking-wider">
+      <div className="font-mono text-sm text-white/60 mt-2 tracking-wider">
         {label}
       </div>
     </motion.div>
@@ -88,7 +88,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
     >
-      <div className="text-white/40 mb-2">{'// '}<span className="text-terminal-green">{testimonial.role}</span></div>
+      <div className="text-white/60 mb-2">{'// '}<span className="text-terminal-green">{testimonial.role}</span></div>
       <div className="text-white/80 italic mb-3">"{testimonial.quote}"</div>
       <div className="text-terminal-green/60">— {testimonial.author}</div>
     </motion.div>
@@ -144,18 +144,18 @@ export function StatsTicker() {
           viewport={{ once: true }}
         >
           <div className="inline-block border border-terminal-green/30 rounded-lg p-6 bg-void-soft">
-            <div className="font-mono text-sm text-white/40 mb-2">Total Earnings</div>
+            <div className="font-mono text-sm text-white/60 mb-2">Total Earnings</div>
             <div className="font-mono text-3xl text-terminal-green tracking-wider">
               $<span className="blur-sm select-none">███,███</span>
             </div>
-            <div className="font-mono text-xs text-white/30 mt-2">[REDACTED FOR YOUR SAFETY]</div>
+            <div className="font-mono text-sm text-white/50 mt-2">[REDACTED FOR YOUR SAFETY]</div>
           </div>
         </motion.div>
 
         {/* Testimonials as Code Comments */}
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="font-mono text-sm text-white/40 mb-6"
+            className="font-mono text-sm text-white/60 mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

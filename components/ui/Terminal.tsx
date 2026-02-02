@@ -64,7 +64,7 @@ export function Terminal({ lines, className = '' }: TerminalProps) {
         <div className="terminal-dot bg-red-500" />
         <div className="terminal-dot bg-yellow-500" />
         <div className="terminal-dot bg-green-500" />
-        <span className="ml-4 text-xs text-white/40 font-mono">brain_crumbs.sh</span>
+        <span className="ml-4 text-sm text-white/60 font-mono">brain_crumbs.sh</span>
       </div>
 
       {/* Terminal Body */}
