@@ -82,7 +82,7 @@ function Pillar({ title, subtitle, copy, icon, gradient, index }: PillarProps) {
   )
 }
 
-// Icon components
+// Animated icon components (desktop — use whileInView)
 function DarkroomIcon() {
   return (
     <svg viewBox="0 0 200 200" className="w-48 h-48 text-terminal-green">
@@ -92,7 +92,6 @@ function DarkroomIcon() {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        {/* Camera aperture */}
         {[0, 60, 120, 180, 240, 300].map((rotation, i) => (
           <motion.path
             key={i}
@@ -108,23 +107,16 @@ function DarkroomIcon() {
           />
         ))}
         <motion.circle
-          cx="100"
-          cy="100"
-          r="60"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
+          cx="100" cy="100" r="60"
+          fill="none" stroke="currentColor" strokeWidth="2"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         />
         <motion.circle
-          cx="100"
-          cy="100"
-          r="30"
-          fill="currentColor"
-          fillOpacity="0.2"
+          cx="100" cy="100" r="30"
+          fill="currentColor" fillOpacity="0.2"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -138,65 +130,25 @@ function DarkroomIcon() {
 function CodebaseIcon() {
   return (
     <div className="font-mono text-terminal-green text-sm leading-loose opacity-80">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-      >
+      <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
         <span className="text-holo-magenta">const</span> architect = {'{'}
       </motion.div>
-      <motion.div
-        className="ml-4"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-      >
+      <motion.div className="ml-4" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
         python: <span className="text-holo-cyan">true</span>,
       </motion.div>
-      <motion.div
-        className="ml-4"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
-      >
+      <motion.div className="ml-4" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
         rust: <span className="text-holo-cyan">true</span>,
       </motion.div>
-      <motion.div
-        className="ml-4"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-      >
+      <motion.div className="ml-4" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
         react: <span className="text-holo-cyan">true</span>,
       </motion.div>
-      <motion.div
-        className="ml-4"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
-      >
+      <motion.div className="ml-4" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>
         solidity: <span className="text-holo-cyan">true</span>,
       </motion.div>
-      <motion.div
-        className="ml-4"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.6 }}
-      >
+      <motion.div className="ml-4" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>
         technicalDebt: <span className="text-holo-yellow">0</span>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.7 }}
-      >
+      <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.7 }}>
         {'}'};
       </motion.div>
     </div>
@@ -214,24 +166,18 @@ function LatentSpaceIcon() {
         </linearGradient>
       </defs>
       <motion.g>
-        {/* Neural network nodes */}
         {[
           [50, 50], [150, 50], [100, 100], [50, 150], [150, 150],
           [25, 100], [175, 100], [100, 25], [100, 175]
         ].map(([cx, cy], i) => (
           <motion.circle
-            key={i}
-            cx={cx}
-            cy={cy}
-            r="8"
-            fill="url(#holoGrad)"
+            key={i} cx={cx} cy={cy} r="8" fill="url(#holoGrad)"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.3 }}
           />
         ))}
-        {/* Connections */}
         {[
           [50, 50, 100, 100], [150, 50, 100, 100],
           [100, 100, 50, 150], [100, 100, 150, 150],
@@ -239,14 +185,8 @@ function LatentSpaceIcon() {
           [100, 25, 50, 50], [100, 25, 150, 50]
         ].map(([x1, y1, x2, y2], i) => (
           <motion.line
-            key={`line-${i}`}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="url(#holoGrad)"
-            strokeWidth="1"
-            strokeOpacity="0.5"
+            key={`line-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke="url(#holoGrad)" strokeWidth="1" strokeOpacity="0.5"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
             viewport={{ once: true }}
@@ -258,33 +198,161 @@ function LatentSpaceIcon() {
   )
 }
 
-const pillars = [
+// Static icon components (mobile — no IntersectionObserver dependency)
+function DarkroomIconStatic() {
+  return (
+    <svg viewBox="0 0 200 200" className="w-48 h-48 text-terminal-green">
+      <g>
+        {[0, 60, 120, 180, 240, 300].map((rotation, i) => (
+          <path
+            key={i}
+            d="M100,50 L130,100 L100,100 Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            transform={`rotate(${rotation} 100 100)`}
+          />
+        ))}
+        <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="2" />
+        <circle cx="100" cy="100" r="30" fill="currentColor" fillOpacity="0.2" />
+      </g>
+    </svg>
+  )
+}
+
+function CodebaseIconStatic() {
+  return (
+    <div className="font-mono text-terminal-green text-sm leading-loose opacity-80">
+      <div><span className="text-holo-magenta">const</span> architect = {'{'}</div>
+      <div className="ml-4">python: <span className="text-holo-cyan">true</span>,</div>
+      <div className="ml-4">rust: <span className="text-holo-cyan">true</span>,</div>
+      <div className="ml-4">react: <span className="text-holo-cyan">true</span>,</div>
+      <div className="ml-4">solidity: <span className="text-holo-cyan">true</span>,</div>
+      <div className="ml-4">technicalDebt: <span className="text-holo-yellow">0</span></div>
+      <div>{'}'};
+      </div>
+    </div>
+  )
+}
+
+function LatentSpaceIconStatic() {
+  return (
+    <svg viewBox="0 0 200 200" className="w-48 h-48">
+      <defs>
+        <linearGradient id="holoGradStatic" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ff00ff" />
+          <stop offset="50%" stopColor="#00ffff" />
+          <stop offset="100%" stopColor="#ffff00" />
+        </linearGradient>
+      </defs>
+      <g>
+        {[
+          [50, 50], [150, 50], [100, 100], [50, 150], [150, 150],
+          [25, 100], [175, 100], [100, 25], [100, 175]
+        ].map(([cx, cy], i) => (
+          <circle key={i} cx={cx} cy={cy} r="8" fill="url(#holoGradStatic)" />
+        ))}
+        {[
+          [50, 50, 100, 100], [150, 50, 100, 100],
+          [100, 100, 50, 150], [100, 100, 150, 150],
+          [50, 50, 25, 100], [150, 50, 175, 100],
+          [100, 25, 50, 50], [100, 25, 150, 50]
+        ].map(([x1, y1, x2, y2], i) => (
+          <line key={`line-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke="url(#holoGradStatic)" strokeWidth="1" strokeOpacity="0.5" />
+        ))}
+      </g>
+    </svg>
+  )
+}
+
+const pillarData = [
   {
     title: 'The Darkroom',
     subtitle: '// Design',
     copy: 'Composition is mathematical. From developing 35mm film in chemical baths to vectorizing brand identities. I see the grid before I draw the line.',
-    icon: <DarkroomIcon />,
     gradient: 'bg-gradient-to-br from-void-lighter to-void border border-white/10',
   },
   {
     title: 'The Codebase',
     subtitle: '// Development',
     copy: 'Python, Rust, React, Solidity. Languages are just tools. I speak the logic of the machine. Clean architecture, zero technical debt.',
-    icon: <CodebaseIcon />,
     gradient: 'bg-gradient-to-br from-void-lighter to-void border border-terminal-green/20',
   },
   {
     title: 'The Latent Space',
     subtitle: '// AI Orchestration',
     copy: "I don't fear the singularity; I hold the leash. I build the agents that replace your team. Prompt Engineering? No. I am a Prompt Mage.",
-    icon: <LatentSpaceIcon />,
     gradient: 'bg-gradient-to-br from-void-lighter to-void border border-holo-magenta/20',
   },
 ]
 
+const desktopIcons = [<DarkroomIcon />, <CodebaseIcon />, <LatentSpaceIcon />]
+const mobileIcons = [<DarkroomIconStatic />, <CodebaseIconStatic />, <LatentSpaceIconStatic />]
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint}px)`)
+    setIsMobile(mql.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [breakpoint])
+
+  return isMobile
+}
+
+function MobilePillar({ title, subtitle, copy, icon, gradient, index }: PillarProps) {
+  return (
+    <div className="px-6 py-12">
+      <div className="max-w-md mx-auto space-y-6">
+        <div
+          className={`aspect-square rounded-2xl overflow-hidden relative ${gradient}`}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            {icon}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent" />
+        </div>
+
+        <span className="block font-mono text-terminal-green text-sm tracking-widest uppercase">
+          {subtitle}
+        </span>
+
+        <h2 className="font-display text-3xl font-bold text-white">
+          {title}
+        </h2>
+
+        <p className="text-base text-white/70 leading-relaxed">
+          {copy}
+        </p>
+
+        <div
+          className="w-24 h-1 bg-terminal-green"
+        />
+      </div>
+    </div>
+  )
+}
+
+function ProgressBar({ scrollYProgress, start, end }: { scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress']; start: number; end: number }) {
+  const scaleX = useTransform(scrollYProgress, [start, end], [0, 1])
+  return (
+    <motion.div className="w-12 h-1 bg-white/20 rounded-full overflow-hidden">
+      <motion.div
+        className="h-full bg-terminal-green"
+        style={{ scaleX, originX: 0 }}
+      />
+    </motion.div>
+  )
+}
+
 export function Trinity() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     setIsMounted(true)
@@ -295,13 +363,28 @@ export function Trinity() {
     offset: ['start start', 'end end'],
   })
 
-  // Transform x to scroll through all 3 panels
-  // With 3 100vw panels, we need to move -200vw total to see all panels
   const x = useTransform(scrollYProgress, [0, 1], ['0vw', '-200vw'])
+
+  if (isMobile) {
+    return (
+      <section className="bg-void py-16">
+        <div className="text-center mb-8">
+          <span className="font-mono text-terminal-green text-sm tracking-widest">
+            {'>'} The Trinity of Mastery
+          </span>
+        </div>
+
+        <div className="space-y-8">
+          {pillarData.map((pillar, index) => (
+            <MobilePillar key={pillar.title} {...pillar} icon={mobileIcons[index]} index={index} />
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section ref={containerRef} className="relative h-[300vh]">
-      {/* Section Title */}
       <div className="sticky top-0 h-screen overflow-hidden bg-void">
         <motion.div
           className="absolute top-20 left-0 right-0 text-center z-10"
@@ -314,40 +397,24 @@ export function Trinity() {
           </span>
         </motion.div>
 
-        {/* Horizontal Scroll Container */}
         <motion.div
           className="flex h-full"
           style={{ x }}
         >
-          {pillars.map((pillar, index) => (
-            <Pillar key={pillar.title} {...pillar} index={index} />
+          {pillarData.map((pillar, index) => (
+            <Pillar key={pillar.title} {...pillar} icon={desktopIcons[index]} index={index} />
           ))}
         </motion.div>
 
-        {/* Progress Indicator */}
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-          {pillars.map((_, index) => {
-            const start = index / pillars.length
-            const end = (index + 1) / pillars.length
-            return (
-              <motion.div
-                key={index}
-                className="w-12 h-1 bg-white/20 rounded-full overflow-hidden"
-              >
-                <motion.div
-                  className="h-full bg-terminal-green"
-                  style={{
-                    scaleX: useTransform(
-                      scrollYProgress,
-                      [start, end],
-                      [0, 1]
-                    ),
-                    originX: 0,
-                  }}
-                />
-              </motion.div>
-            )
-          })}
+          {pillarData.map((_, index) => (
+            <ProgressBar
+              key={index}
+              scrollYProgress={scrollYProgress}
+              start={index / pillarData.length}
+              end={(index + 1) / pillarData.length}
+            />
+          ))}
         </div>
       </div>
     </section>
